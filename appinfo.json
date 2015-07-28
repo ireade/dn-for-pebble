@@ -35,7 +35,7 @@
     "shortName": "Pebble DN",
     "uuid": "0190925b-9616-4e0d-925e-70758c89cab0",
     "versionCode": 1,
-    "versionLabel": "1.0",
+    "versionLabel": "1.1",
     "watchapp": {
         "watchface": false
     }
