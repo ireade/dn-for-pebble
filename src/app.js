@@ -95,16 +95,30 @@ ajax(
         fullscreen: true
       });
 
+      
+      var headerHeight;
+      var descriptionPos;
+      
+      if (storyTitle.length < 40 ) {
+        headerHeight = 90;
+        descriptionPos = new Vector2(8, 95);
+      } else if (storyTitle.length > 39 && storyTitle.length < 50 ) {
+        headerHeight = 110;
+        descriptionPos = new Vector2(8, 115);
+      } else if (storyTitle.length > 49 && storyTitle.length < 60 ) {
+        headerHeight = 120;
+        descriptionPos = new Vector2(8, 125);
+      } else {
+        headerHeight = 140;
+        descriptionPos = new Vector2(8, 145);
+      }
+
+
+
       var headerBg = new UI.Rect({
         position: new Vector2(0, 0),
-        size: new Vector2(144, 105),
-        backgroundColor: 'blue'
-      });
-      
-      var bodyBg = new UI.Rect({
-        position: new Vector2(0, 105),
-        size: new Vector2(144, 320),
-        backgroundColor: 'white'
+        size: new Vector2(144, headerHeight),
+        backgroundColor: 'blue',
       });
       
       var Title = new UI.Text({
@@ -118,8 +132,13 @@ ajax(
         backgroundColor:'clear'
       });
       
+      var bodyBg = new UI.Rect({
+        position: new Vector2(0, headerHeight),
+        size: new Vector2(144, 320),
+        backgroundColor: 'white'
+      });
       var Description = new UI.Text({
-        position: new Vector2(8, 110),
+        position: descriptionPos,
         size: new Vector2(131, 300),
         text: storyDescription,
         font:'GOTHIC_18',
@@ -128,7 +147,8 @@ ajax(
         textAlign:'left',
         backgroundColor:'clear'
       });
-      
+
+
       detailView.add(headerBg);
       detailView.add(bodyBg);
       detailView.add(Title);
